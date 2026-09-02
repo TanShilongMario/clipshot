@@ -1,4 +1,4 @@
 interface:
   display_name: "电影分镜设计"
-  short_description: "把剧本转化为差异化双方案九宫格分镜和时间线镜头表"
-  default_prompt: "使用 $cinematic-storyboard-design 将我的剧本设计成两套镜头语言差异明确的九宫格电影分镜，并提供时间线镜头表。"
+  short_description: "把剧本转化为可执行的九宫格制作型分镜和时间线镜头表"
+  default_prompt: "使用 $cinematic-storyboard-design 将我的剧本设计成一套镜头语言明确的九宫格电影分镜，并提供时间线镜头表。"

@@ -2,17 +2,25 @@
 
 仅在生成、编辑或审查实际分镜图时读取。创建或编辑位图分镜时使用当前环境可用的图像生成能力。
 
+## 结果优先原则
+
+不得根据生成提示词推断图像一定符合要求。生成完成后必须检查实际图像。即使提示词已写 `pencil storyboard, no photorealism`，只要实际结果仍是真人摄影、成片静帧或精致插画，就判定为 STYLE FAIL。Prompt 正确不能替代结果正确。未完成强制交付门禁前，不得向用户交付图像。
+
 ## 九宫格规格
 
 - 一张合成图内严格包含 3 列 × 3 行，共九格。
 - 九个画框外部尺寸、内部画幅与间距一致；不得出现跨格大画面或大小混排。
 - 阅读顺序为从左到右、从上到下，镜号 01—09。
 - 横屏项目每格为 16:9；竖屏项目每格为用户指定的 3:4 或 9:16。整张画布比例由九格排版自然决定，不要把单格画幅误当成合成图画幅。
-- 留出清晰白色 gutter 和明确黑边框；边框在缩略图中仍可辨认。除镜号、极短运动标记外，不在图内放长句、对白或时间线。
+- 留出清晰白色 gutter 和明确黑边框；边框在缩略图中仍可辨认。
+
+## 图内文字最小化
+
+九宫格图片内只保留镜号、极短时间码、必要的镜头运动标签和极短 UI。不要求图像模型准确排版完整对白、镜头说明或长中文注释。完整对白、镜头描述、时间码和导演说明统一放在九宫格后的时间线表。若用户明确要求带完整台词的展示版，可额外生成，但制作型 storyboard 仍应保留一个低文本版本。
 
 ## 固定视觉语言
 
-以制作型故事板为目标，不是成片预览、概念图或静帧：
+除非用户明确要求其他形式，图像交付必须是 production storyboard，不得输出写实摄影、电影剧照、广告成片、3D 渲染、精致漫画或概念艺术。
 
 - 白色或暖白纸面；黑色钢笔、铅笔或墨线画结构，马克笔或色块画光影。禁止交纯线稿；
 - 场景只用透视框架、空间锚点和少量概括线建立拍摄关系，不渲染全部材质；
@@ -21,7 +29,32 @@
 - 人物按下方「结构人体」画：机位和姿态优先，需要时加简单五官和清楚的手，不画成肖像、漫画角色或真人；
 - 动作需要时使用少量重复轮廓、速度线、撞击线或抽象运动场，不用快门动态模糊或镜头色散；
 - 保留景别变化、前中后景、环境尺度和有限主导色块；焦感只用透视压缩或边缘形变暗示，不出现浅景深、虚化光斑或镜头光晕；
-- 禁止照片写实、成片静帧、三维渲染、精致漫画、概念海报、体积光、电影调色，以及用密集交叉排线、重复草木、泥点、雨雾颗粒或纸张脏纹制造“完成度”。清晰度来自轮廓、块面、透视和动作，不来自细节数量或真实感。
+- 禁止照片写实、成片静帧、三维渲染、精致漫画、概念海报、体积光、电影调色，以及用密集交叉排线、重复草木、泥点、雨雾颗粒或纸张脏纹制造“完成度”。清晰度来自轮廓、块面、透视、光形和动作，不来自细节数量或真实感。
+
+以下任一情况视为生成失败，必须重新生成，不得交付：
+
+- 画面呈现真实摄影级皮肤、材质、景深或灯光；
+- 人物看起来像真人照片，而非结构速写；
+- 场景具有广告成片级材质与精修光效；
+- 九宫格主要由 polished cinematic stills 构成；
+- 铅笔、钢笔或墨线结构语言没有占据视觉主体；
+- 画面更接近 concept art、movie still、commercial key visual，而不是 production storyboard。
+
+## 写实参考图隔离
+
+当用户提供真人照片、产品照片、实景空间照片或广告成片作为参考时，默认仅用于内容连续性，不继承其摄影渲染风格。除非用户明确指定某张图片为艺术风格参考或渲染风格参考：
+
+- 真人照片只继承人物年龄、发型外轮廓、服装色块、体态、身份特征及必要表情特征；
+- 产品照片只继承产品外形、比例、关键结构和识别性特征；
+- 场景照片只继承空间布局、家具位置、门窗关系、环境尺度及必要地标；
+- 广告或成片截图只继承用户明确指定的构图、调度、镜头语言或灯光逻辑；
+- 不继承真实皮肤质感、摄影景深、电影级成片光效、照片级材质或广告精修效果。
+
+提示词必须显式加入：`Reference images are continuity references only, not rendering-style references.` 参考是照片或成片时再写：`redraw as ink construction figures with flat marker lighting; inherit body proportion, costume blocks, and graphic light direction; keep simple graphic faces and clear hand poses where the shot needs them; discard photographic finish.`
+
+## 风格冲突处理
+
+若输入同时包含 storyboard 风格和成片写实风格，先判断词语属于 rendering medium、camera / lighting language 还是 performance realism。`cinematic / realistic / premium / film lighting` 默认属于后两类。最终 rendering medium 必须保持 production storyboard, pencil / pen / ink line drawing, restrained grayscale marker blocks。同一请求中不得使用 photorealistic storyboard、realistic human skin、cinematic still photography、polished commercial photography，除非用户明确要求 photorealistic previz。
 
 ## 结构人体
 
@@ -48,7 +81,7 @@
 - 有限主导色可以加入光色块，例如暖窗、冷月光，仍是平涂色块，不是电影调色；
 - 九格之间的光要连续：同一场次光源方向和光的形状不得无故翻转，除非剧本改了时间或灯。
 
-纯线稿、只有轮廓没有受光/背光块面，视为未完成，必须补马克笔后再交付。
+纯线稿、只有轮廓没有受光/背光块面，视为未完成，必须补马克笔后再交付。光必须是空间里的大块图形，不是每个物体分别做三维 shading。
 
 ## 生成提示词结构
 
@@ -59,10 +92,10 @@
 3. 全局媒介与有限色彩：paper storyboard, ink/pencil structure lines plus flat marker or color-block lighting, not line art only；
 4. 人物写法：construction figure first, camera and pose readable, simple graphic facial features when the shot needs them, detailed hand poses and finger articulation for any important hand action；角色连续性写体量、比例、剪影和必要时的服装色块，不写真实材质；
 5. Shot 01—09 各自的景别、机位、构图、动作瞬间、视线、环境信息、箭头，以及主光方位、光的形态、受光面与影子落点；
-6. 明确艺术参考与连续性参考各自的作用，不继承参考图中的无关内容和任何真实感；
-7. 全局禁项：no merged panels, no unequal frames, no extra panels, no long captions, no line-art-only panels, no missing light and shadow masses, no photorealism, no photographic lighting, no cinematic still, no film still, no 3D render, no Unreal Engine, no Octane, no subsurface skin, no pores, no realistic hair, no fabric microtexture, no metal reflection, no glass refraction, no depth of field, no bokeh, no lens flare, no volumetric light, no god rays, no HDR bloom, no film grain used as realism, no camera-shutter motion blur, no color grade, no concept-art finish, no matte painting, no polished illustration, no blob hands on close-ups, no decorative arrows, no inconsistent body proportions。
+6. 明确每张参考图是 CONTENT、CONTINUITY、CAMERA 还是 STYLE；写实图默认 CONTINUITY，并加入 `Reference images are continuity references only, not rendering-style references.`；
+7. 全局禁项：no merged panels, no unequal frames, no extra panels, no long captions, no line-art-only panels, no missing light and shadow masses, no photorealism, no photographic lighting, no cinematic still, no film still, no 3D render, no Unreal Engine, no Octane, no subsurface skin, no pores, no realistic hair, no fabric microtexture, no metal reflection, no glass refraction, no depth of field, no bokeh, no lens flare, no volumetric light, no god rays, no HDR bloom, no film grain used as realism, no camera-shutter motion blur, no color grade, no concept-art finish, no matte painting, no polished illustration, no character illustration, no blob hands on close-ups, no decorative arrows, no inconsistent body proportions。
 
-不要只写氛围词或导演姓名。每格至少指定：主体位置、镜头高度/角度、景别、可见动作、环境锚点、运动方向、主光方位和光的形态。若使用参考图，逐张标明其角色：内容依据、连续性参考或艺术/镜头语言参考；明确要继承的图形特征和必须排除的真实感。参考是照片或成片时，提示词写清 redraw as ink construction figures with flat marker lighting; inherit body proportion, costume blocks, and graphic light direction; keep simple graphic faces and clear hand poses where the shot needs them; discard photographic finish。
+不要只写氛围词或导演姓名。每格至少指定：主体位置、镜头高度/角度、景别、可见动作、环境锚点、运动方向、主光方位和光的形态。不得在同一提示词中混入会改媒介的冲突表达。
 
 双方案生成时分别写两套完整提示词。除共享的剧情与连续性锚点外，各自明确观看立场、构图原则、景别节奏、运镜策略和转场逻辑；不要依赖“同一提示词换一个风格名称”获得差异。
 
@@ -75,28 +108,64 @@
 
 同一格最多突出一项主要运动，复杂动作可拆成相邻镜头。
 
-## 生成后视觉检查
+## 强制交付门禁
 
-必须实际检查生成结果，而非仅相信提示词：
+每次图像生成后，不得立即向用户交付。必须先对实际图像完成以下 PASS / FAIL。任意一项 FAIL：不得交付；内容错误可修单格，视觉系统错误必须整张重绘。只有全部 PASS 后，才能输出最终结果。
 
-1. 数出恰好九格，确认无合并、缺失、重复或额外小格；
-2. 检查每格画幅、边框和间距一致；
-3. 逐格核对镜号与脚本节拍；
-4. 核对人物体量、比例、剪影身份、必要服装色块、关键道具和空间方向；机位和姿态必须先可读；
-5. 核对红线是否准确落在人物动作或镜头轨迹上；
-6. 检查姿态重心、接触关系、透视和遮挡；手部入画时姿势是否清楚，手部特写是否画出手指和受力；面部特写是否有可读的五官动态，且仍是线稿而非真人脸；每格是否有马克笔或色块标出主光方位、光的形态、受光面和影子，而不是纯线稿；
-7. 检查特殊转场是否在相关两格之间形成可见关系；
-8. 执行下方反真实感硬门；未通过则不得交付。
+### PASS 1 — GRID
 
-若交付双方案，再并排检查两版的缩略图节奏：至少三项镜头语言维度应形成整组差异；不能只有灰阶、颜色或笔触不同。
+- 是否严格 3×3？
+- 是否恰好九格？
+- 九格是否等尺寸？
+- 是否没有跨格、合并格、额外小格或缺失格？
+- 单格画幅是否符合用户确认的比例？
 
-若格数或结构错误，重新生成整张九宫格；若只有单格内容偏差，优先保持整体布局的编辑方式修正。无法保证图内文字准确时，减少文字，仅保留视觉镜号，并以外部时间线表为准。
+### PASS 2 — STORYBOARD STYLE
 
-## 反真实感硬门
+- 是否明显为 production storyboard？
+- 是否以铅笔、钢笔或墨线为结构主体，并以马克笔块面表达光影？
+- 是否避免照片写实、电影剧照、广告成片、3D 渲染和精致概念图？
+- 缩略观看时是否仍然能够看出这是拍摄分镜，而不是九张成片截图？
 
-分镜图是后续再创作的中间稿。任何真实感都会被下游图像或视频模型继承，锁死成片气质。真实感不是风格偏好，而是交付失败。缩略图必须首先被读成“纸上分镜”，不能被误认为影片截图。
+### PASS 3 — CONTINUITY
 
-逐格检查真实感，不要把正常的线稿五官、清楚的手部姿势，或马克笔画出的光面、影子和光色块当成错误。纯线稿、看不出光从哪来或落成什么形状，必须补块面后再交付。命中下列任一项才必须修回线稿加马克笔：
+- 人物年龄感、发型外轮廓、服装色块、体型是否一致？
+- 关键道具外形是否连续，是否在同一只手或完成合理交接？
+- 家具、门窗和环境地标位置是否合理？
+- 人物视线和屏幕方向是否连续？
+
+### PASS 4 — CINEMATIC READABILITY
+
+- 缩略图下是否可以读懂每格的主要动作？
+- 景别是否有变化，而不是九格都像同一个中景？
+- 构图是否能清楚表现人物、道具与空间关系？
+- 关键情绪转折是否通过镜头而非文字说明成立？
+- 每格能否读出主光方位和光的形状？纯线稿必须补色块。
+
+### PASS 5 — MOTION MARKING
+
+- 人物动作箭头是否准确？
+- 镜头运动箭头是否位于画框边缘并有明确标签？
+- 视线箭头是否只在必要时出现？
+- 是否没有装饰性或意义不明的箭头？
+
+若交付双方案，再并排检查两版：至少三项镜头语言维度应形成整组差异；不能只有灰阶、颜色或笔触不同。
+
+## 三道硬门
+
+在强制交付门禁之外，再执行以下三道硬门。任何一道失败都不得交付。
+
+### 人物抽象硬门
+
+人物必须先读成结构人体。远中景若五官、头发或服装细节抢走姿态和机位信息，FAIL。角色立绘、精致漫画人物、真人肖像，FAIL。面部特写没有必要五官动态，或手部关键动作没有手指和受力，也 FAIL。不要把正常的线稿五官和清楚的手当成错误。
+
+### 光影结构硬门
+
+每格必须能读出光从哪来、落成什么形状、受光面和影子落点。纯线稿 FAIL。光影若变成每个物体的三维 shading、体积光或写实软阴影，而不是大块图形光形，FAIL。
+
+### 反真实感硬门
+
+分镜图是后续再创作的中间稿。任何照片或成片气质都会被下游继承，锁死成片气质。不要把马克笔画出的光面、影子和光色块当成错误。命中下列任一项必须修回线稿加马克笔，或在视觉系统错误时整张重绘：
 
 - 人脸或皮肤可读成照片：毛孔、血色、真实毛发、湿润嘴唇、眼白高光、睫毛微距；
 - 服装或道具出现衣褶渲染、纤维、缝线微距、皮革纹理、金属反射、玻璃折射、屏幕发光；
@@ -105,7 +174,11 @@
 - 三维或概念图完成度：Unreal / Octane / Blender 渲染感、精致厚涂、海报精修、雾气照片、写实天气粒子；
 - 参考图污染：用户照片或成片的光影完成度被原样带入。
 
-通过标准：缩略图先读到机位、姿态，以及光的位置和形态；该有的五官动态和手部姿势清楚，但整张仍是纸上分镜加马克笔块面。材质只保留“是布 / 是金属 / 是玻璃”的图形提示。修回时删除真实感，不要为了“干净”抹掉必要的脸、手和光影。
+## 最终媒介自检
+
+交付前最后问自己：这张图第一眼看起来，是导演拿去拍摄用的 storyboard，还是观众会以为这是已经拍好的画面？若偏向后者：STYLE FAIL，重新生成。
+
+通过标准：缩略图先读到机位、姿态，以及光的位置和形态；该有的五官动态和手部姿势清楚；整张仍是纸上分镜加马克笔块面。修回时删除真实感和角色插画完成度，不要为了干净抹掉必要的脸、手和光影。
 
 ## 单格放大
 
@@ -116,6 +189,6 @@
 - 按原景别加深该加深的部分：姿态、关节、手部姿势、接触点、面部特写中的五官动态，以及更清楚的光面、光形和影子落点；天气或烟尘只能用概括色块或少量线条，不能变成照片粒子；
 - 原格若有红色动线，放大后保持相同起止方向并提高标记精度；
 - 不添加后续剧情，不改变人物输赢、道具归属或动作结果；
-- 放大后再次执行反真实感硬门；若出现皮肤、浅景深、体积光或真实材质，视为失败并修回。
+- 放大后再次执行强制交付门禁和三道硬门。
 
 输出时同时列出“保持不变的连续性锚点”和“本次新增的图形细节”。
