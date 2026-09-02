@@ -14,16 +14,41 @@
 
 以制作型故事板为目标，不是成片预览、概念图或静帧：
 
-- 白色或暖白纸面，黑色钢笔、铅笔或墨线速写；主体轮廓果断，内部可保留快速结构线和动作弧线；
+- 白色或暖白纸面；黑色钢笔、铅笔或墨线画结构，马克笔或色块画光影。禁止交纯线稿；
 - 场景只用透视框架、空间锚点和少量概括线建立拍摄关系，不渲染全部材质；
-- 以纸白、浅灰、中灰和极少深灰的大块马克笔面区分前后景与焦点，避免碎小灰点；
+- 以纸白、浅灰、中灰和极少深灰的大块马克笔面标出受光、背光、影子和前后层次，避免碎小灰点；
 - 只用一种克制的红色或用户指定高亮色表示人物路径、动作弧线、视线或镜头轨迹；
-- 人物不是符号小人，但也不是肖像或真人：身体比例、肩线、脊柱、骨盆、关节方向、受力、重心、接触点与表演姿态必须准确；
-- 面部只保留足够辨认情绪、视线和角色身份的结构笔画，不画皮肤、毛孔、真实毛发或眼中摄影高光；
-- 服装褶皱和道具纹样只画影响动作或辨识的结构，不画纤维、缝线微距、金属反射或玻璃折射；
+- 人物按下方「结构人体」画：机位和姿态优先，需要时加简单五官和清楚的手，不画成肖像、漫画角色或真人；
 - 动作需要时使用少量重复轮廓、速度线、撞击线或抽象运动场，不用快门动态模糊或镜头色散；
 - 保留景别变化、前中后景、环境尺度和有限主导色块；焦感只用透视压缩或边缘形变暗示，不出现浅景深、虚化光斑或镜头光晕；
 - 禁止照片写实、成片静帧、三维渲染、精致漫画、概念海报、体积光、电影调色，以及用密集交叉排线、重复草木、泥点、雨雾颗粒或纸张脏纹制造“完成度”。清晰度来自轮廓、块面、透视和动作，不来自细节数量或真实感。
+
+## 结构人体
+
+人物是姿态和调度的载体，不是角色设计。主次是：先让机位和全身姿态可读，再按景别补脸上和手上的必要信息。
+
+- 先画一条清楚的动作线，再摆胸廓、骨盆、肩带和头的扭转；重心、支撑脚和接触点必须可读；
+- 远景、全景、中景：头可用椭圆加十字线或简单侧脸轮廓；五官可省略，或只用两三笔标视线和口型。不要把远景脸画成肖像；
+- 中近景、近景：用简单线稿五官表达视线、眉眼开合和口型变化，保持图形笔画，不画皮肤、睫毛微距或血色；
+- 面部特写：必须画出五官动态，让观众读懂判断、隐瞒、震惊或说话，但仍是线稿结构，不是真人脸；
+- 手只要入画，就要画出可辨认的姿势、指向和抓握。手部特写、递接道具、持械、撑地或发力镜头，必须画出手指分开、关节转向和受力，不能收成楔形或连指团；
+- 躯干用少量内部结构线分开胸廓与骨盆，可露出肩胛或腹面转折，不画肌肉精修或皮肤；
+- 体型差异用肩宽、髋宽、胸廓和肢体长短区分；需要辨认角色时，加贴头的发型剪影和贴身服装色块，不画发丝和面料；
+- 单格放大按原景别加深该加深的部分：脸部特写加深五官动态，手部特写加深手指和接触点，全身镜加深姿态，不把整个人物画成立绘。
+
+情绪首先来自姿态、头朝向、肩的开合和重心；五官只在景别需要时作为补充，不替代身体表演。
+
+## 光的形态与位置
+
+光影是分镜信息，不是装饰。每格都必须用马克笔或色块画出光从哪里来、落成什么形状，不能只靠线条暗示。
+
+- 先定主光方位：左、右、顶、逆、底或画面内实际光源；缩略图也应读得出光从哪一侧进来；
+- 再画光的形态：窗格、门缝光带、灯池、逆光轮廓、斜切光面、地面光斑等，用大块深浅面表达，不画体积光柱或镜头光晕；
+- 人物和关键道具要分开受光面与背光面；影子落在地面、墙面或身体上的位置要交代，形状概括，不要写实软阴影；
+- 有限主导色可以加入光色块，例如暖窗、冷月光，仍是平涂色块，不是电影调色；
+- 九格之间的光要连续：同一场次光源方向和光的形状不得无故翻转，除非剧本改了时间或灯。
+
+纯线稿、只有轮廓没有受光/背光块面，视为未完成，必须补马克笔后再交付。
 
 ## 生成提示词结构
 
@@ -31,13 +56,13 @@
 
 1. 交付物：production storyboard sheet，strict equal 3×3 grid；
 2. 每格画幅、边框、gutter、编号和阅读顺序；
-3. 全局媒介与有限色彩：paper storyboard, ink/pencil line, flat marker values, limited graphic color；
-4. 角色与场景连续性锚点，只写剪影、色块和空间，不写真实材质；
-5. Shot 01—09 各自的景别、机位、构图、动作瞬间、视线、环境信息和箭头；
+3. 全局媒介与有限色彩：paper storyboard, ink/pencil structure lines plus flat marker or color-block lighting, not line art only；
+4. 人物写法：construction figure first, camera and pose readable, simple graphic facial features when the shot needs them, detailed hand poses and finger articulation for any important hand action；角色连续性写体量、比例、剪影和必要时的服装色块，不写真实材质；
+5. Shot 01—09 各自的景别、机位、构图、动作瞬间、视线、环境信息、箭头，以及主光方位、光的形态、受光面与影子落点；
 6. 明确艺术参考与连续性参考各自的作用，不继承参考图中的无关内容和任何真实感；
-7. 全局禁项：no merged panels, no unequal frames, no extra panels, no long captions, no photorealism, no photographic lighting, no cinematic still, no film still, no 3D render, no Unreal Engine, no Octane, no subsurface skin, no pores, no realistic hair, no fabric microtexture, no metal reflection, no glass refraction, no depth of field, no bokeh, no lens flare, no volumetric light, no god rays, no HDR bloom, no film grain used as realism, no camera-shutter motion blur, no color grade, no concept-art finish, no matte painting, no polished illustration, no dense crosshatching, no decorative arrows, no inconsistent costumes or props。
+7. 全局禁项：no merged panels, no unequal frames, no extra panels, no long captions, no line-art-only panels, no missing light and shadow masses, no photorealism, no photographic lighting, no cinematic still, no film still, no 3D render, no Unreal Engine, no Octane, no subsurface skin, no pores, no realistic hair, no fabric microtexture, no metal reflection, no glass refraction, no depth of field, no bokeh, no lens flare, no volumetric light, no god rays, no HDR bloom, no film grain used as realism, no camera-shutter motion blur, no color grade, no concept-art finish, no matte painting, no polished illustration, no blob hands on close-ups, no decorative arrows, no inconsistent body proportions。
 
-不要只写氛围词或导演姓名。每格至少指定：主体位置、镜头高度/角度、景别、可见动作、环境锚点、运动方向。若使用参考图，逐张标明其角色：内容依据、连续性参考或艺术/镜头语言参考；明确要继承的图形特征和必须排除的真实感。参考是照片或成片时，提示词写清 inherit silhouette and costume blocks only, discard photographic finish。
+不要只写氛围词或导演姓名。每格至少指定：主体位置、镜头高度/角度、景别、可见动作、环境锚点、运动方向、主光方位和光的形态。若使用参考图，逐张标明其角色：内容依据、连续性参考或艺术/镜头语言参考；明确要继承的图形特征和必须排除的真实感。参考是照片或成片时，提示词写清 redraw as ink construction figures with flat marker lighting; inherit body proportion, costume blocks, and graphic light direction; keep simple graphic faces and clear hand poses where the shot needs them; discard photographic finish。
 
 双方案生成时分别写两套完整提示词。除共享的剧情与连续性锚点外，各自明确观看立场、构图原则、景别节奏、运镜策略和转场逻辑；不要依赖“同一提示词换一个风格名称”获得差异。
 
@@ -57,9 +82,9 @@
 1. 数出恰好九格，确认无合并、缺失、重复或额外小格；
 2. 检查每格画幅、边框和间距一致；
 3. 逐格核对镜号与脚本节拍；
-4. 核对人物发型、服装、体型、关键道具和空间方向；
+4. 核对人物体量、比例、剪影身份、必要服装色块、关键道具和空间方向；机位和姿态必须先可读；
 5. 核对红线是否准确落在人物动作或镜头轨迹上；
-6. 检查姿态重心、接触关系、透视和遮挡；
+6. 检查姿态重心、接触关系、透视和遮挡；手部入画时姿势是否清楚，手部特写是否画出手指和受力；面部特写是否有可读的五官动态，且仍是线稿而非真人脸；每格是否有马克笔或色块标出主光方位、光的形态、受光面和影子，而不是纯线稿；
 7. 检查特殊转场是否在相关两格之间形成可见关系；
 8. 执行下方反真实感硬门；未通过则不得交付。
 
@@ -71,16 +96,16 @@
 
 分镜图是后续再创作的中间稿。任何真实感都会被下游图像或视频模型继承，锁死成片气质。真实感不是风格偏好，而是交付失败。缩略图必须首先被读成“纸上分镜”，不能被误认为影片截图。
 
-逐格检查；任一格命中下列任一项，必须重绘或局部修回线稿块面，不得用时间线表解释：
+逐格检查真实感，不要把正常的线稿五官、清楚的手部姿势，或马克笔画出的光面、影子和光色块当成错误。纯线稿、看不出光从哪来或落成什么形状，必须补块面后再交付。命中下列任一项才必须修回线稿加马克笔：
 
 - 人脸或皮肤可读成照片：毛孔、血色、真实毛发、湿润嘴唇、眼白高光、睫毛微距；
-- 服装或道具出现纤维、缝线微距、皮革纹理、金属反射、玻璃折射、屏幕发光；
+- 服装或道具出现衣褶渲染、纤维、缝线微距、皮革纹理、金属反射、玻璃折射、屏幕发光；
 - 摄影光学：浅景深、背景虚化、光斑、镜头光晕、变形宽银幕炫光、色散、快门动态模糊、胶片颗粒充当真实感；
 - 成片光色：体积光、丁达尔、HDR 辉光、电影调色、霓虹溢色、写实阴影衰减、环境遮蔽；
 - 三维或概念图完成度：Unreal / Octane / Blender 渲染感、精致厚涂、海报精修、雾气照片、写实天气粒子；
 - 参考图污染：用户照片或成片的光影完成度被原样带入。
 
-通过标准：能辨认景别、姿态、空间、接触点和运动方向即可；材质只保留“是布 / 是金属 / 是玻璃”的图形提示，不保留拍摄出来的样子。修回时删除真实感，不要追加更多细节去“画完”。
+通过标准：缩略图先读到机位、姿态，以及光的位置和形态；该有的五官动态和手部姿势清楚，但整张仍是纸上分镜加马克笔块面。材质只保留“是布 / 是金属 / 是玻璃”的图形提示。修回时删除真实感，不要为了“干净”抹掉必要的脸、手和光影。
 
 ## 单格放大
 
@@ -88,7 +113,7 @@
 
 - 锁定原画幅、机位高度、镜头方向、主体位置和动作关键帧；
 - 锁定角色身份、服装色块、道具形状、环境地标、光的方向和主导色块；
-- 允许把手足结构、表情平面、空间层次、群演剪影画得更清楚；天气或烟尘只能用概括色块或少量线条，不能变成照片粒子；
+- 按原景别加深该加深的部分：姿态、关节、手部姿势、接触点、面部特写中的五官动态，以及更清楚的光面、光形和影子落点；天气或烟尘只能用概括色块或少量线条，不能变成照片粒子；
 - 原格若有红色动线，放大后保持相同起止方向并提高标记精度；
 - 不添加后续剧情，不改变人物输赢、道具归属或动作结果；
 - 放大后再次执行反真实感硬门；若出现皮肤、浅景深、体积光或真实材质，视为失败并修回。
