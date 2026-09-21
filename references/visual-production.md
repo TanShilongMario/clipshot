@@ -2,6 +2,8 @@
 
 仅在生成、编辑或审查实际分镜图时读取。创建或编辑位图分镜时使用当前环境可用的图像生成能力。
 
+本文件只约束**分镜图**。分镜图表达运镜方式、构图、调度与光影结构；人物、场景和最终艺术风格不由分镜定稿。分镜单格放大与连续镜头 a/b/c 运镜节点仍然是分镜，不是成片关键帧。用户在整套分镜完成后明确同意制作成片关键帧时，改读 [keyframe-production.md](keyframe-production.md)，不要把两套媒介、提示词或门禁混在一起。
+
 ## 结果优先原则
 
 不得根据生成提示词推断图像一定符合要求。生成完成后必须检查实际图像。即使提示词已写 `pencil storyboard, no photorealism`，只要实际结果仍是真人摄影、成片静帧或精致插画，就判定为 STYLE FAIL。Prompt 正确不能替代结果正确。未完成强制交付门禁前，不得向用户交付图像。
@@ -10,7 +12,7 @@
 
 - 一张合成图内严格包含 3 列 × 3 行，共九格。
 - 九个画框外部尺寸、内部画幅与间距一致；不得出现跨格大画面或大小混排。
-- 阅读顺序为从左到右、从上到下，格号 01—09。普通情况格号可兼作镜号；连续镜头跨格时加标 S04a/b/c 等镜头关键帧标识，遵循 [deliverable-schema.md](deliverable-schema.md) 的计时规则。
+- 阅读顺序为从左到右、从上到下，格号 01—09。普通情况格号可兼作镜号；连续镜头跨格时加标 S04a/b/c 等运镜节点标识，遵循 [deliverable-schema.md](deliverable-schema.md) 的计时规则。
 - 横屏项目每格为 16:9；竖屏项目每格为用户指定的 3:4 或 9:16。整张画布比例由九格排版自然决定，不要把单格画幅误当成合成图画幅。
 - 留出清晰白色 gutter 和明确黑边框；边框在缩略图中仍可辨认。
 
@@ -91,7 +93,7 @@
 2. 每格画幅、边框、gutter、编号和阅读顺序；
 3. 全局媒介与有限色彩：paper storyboard, ink/pencil structure lines plus flat marker or color-block lighting, not line art only；
 4. 人物写法：construction figure first, camera and pose readable, simple graphic facial features when the shot needs them, detailed hand poses and finger articulation for any important hand action；角色连续性写体量、比例、剪影和必要时的服装色块，不写真实材质；
-5. Panel 01—09 各自的镜号/关键帧、景别、机位、构图、动作瞬间、视线、环境信息、箭头，以及主光方位、光的形态、受光面与影子落点。特殊构图写主体面积、位置、裁切边界与空间锚点；运动跨格时分别写起始、转折和落点，不用单个箭头替代整个运动；
+5. Panel 01—09 各自的镜号/运镜节点、景别、机位、构图、动作瞬间、视线、环境信息、箭头，以及主光方位、光的形态、受光面与影子落点。特殊构图写主体面积、位置、裁切边界与空间锚点；运动跨格时分别写起始、转折和落点，不用单个箭头替代整个运动；
 6. 明确每张参考图是 CONTENT、CONTINUITY、CAMERA 还是 STYLE；写实图默认 CONTINUITY，并加入 `Reference images are continuity references only, not rendering-style references.`；
 7. 全局禁项：no merged panels, no unequal frames, no extra panels, no long captions, no line-art-only panels, no missing light and shadow masses, no photorealism, no photographic lighting, no cinematic still, no film still, no 3D render, no Unreal Engine, no Octane, no subsurface skin, no pores, no realistic hair, no fabric microtexture, no metal reflection, no glass refraction, no depth of field, no bokeh, no lens flare, no volumetric light, no god rays, no HDR bloom, no film grain used as realism, no camera-shutter motion blur, no color grade, no concept-art finish, no matte painting, no polished illustration, no character illustration, no blob hands on close-ups, no decorative arrows, no inconsistent body proportions。
 
@@ -106,7 +108,7 @@
 - 视线：细红虚线，仅在空间关系难以读懂时使用。
 - 动作前后位置：必要时使用浅红轮廓或起止点，不制造多个实体人物的误读。
 
-同一格突出一项主要运动；人物与摄影协同时可以同时标记，但必须用位置与标签区分。复杂动作可拆成相邻镜头，或同一镜头的相邻关键帧，不默认添加剪切。荷兰角是机位状态；绕光轴滚转标 ROLL，俯仰标 TILT，不混用。
+同一格突出一项主要运动；人物与摄影协同时可以同时标记，但必须用位置与标签区分。复杂动作可拆成相邻镜头，或同一镜头的相邻运镜节点，不默认添加剪切。荷兰角是机位状态；绕光轴滚转标 ROLL，俯仰标 TILT，不混用。
 
 ## 强制交付门禁
 
@@ -137,7 +139,7 @@
 ### PASS 4 — CINEMATIC READABILITY
 
 - 缩略图下是否可以读懂每格的主要动作？
-- 景别、纵深、遮挡或主体尺度是否随节拍发生有效变化，而不是九格重复同一构图？同一连续镜头的关键帧可以保持景别，用调度和信息变化推进。
+- 景别、纵深、遮挡或主体尺度是否随节拍发生有效变化，而不是九格重复同一构图？同一连续镜头的运镜节点可以保持景别，用调度和信息变化推进。
 - 构图是否能清楚表现人物、道具与空间关系？
 - 关键情绪转折是否通过镜头而非文字说明成立？
 - 每格能否读出主光方位和光的形状？纯线稿必须补色块。
@@ -155,7 +157,7 @@
 - 动作是否有可读的受力、重心改变与空间后果？有意遮蔽时，相邻画面是否提供恢复方向与因果的锚点？
 - 关键镜头的角度、构图或运动是否带来具体收益？若替换为普通平视中景仍无任何信息或身体体验损失，应重新选择镜头设计。固定镜头不因此判失败。
 - 是否有符合本段节拍的蓄势与释放，而非每格等强、等长、等尺度？不要求短片段机械包含所有阶段。
-- 连续运镜关键帧的起止位置与中间路径是否相容，是否明确无剪切且未重复计算镜头时长？
+- 连续运镜节点的起止位置与中间路径是否相容，是否明确无剪切且未重复计算镜头时长？
 
 表现力不足先回到镜头设计修正，再修对应格；不要用更多速度线、倾斜或人物细节掩盖设计问题。只有整组构图同质化等视觉系统错误才按整张重绘处理。
 
@@ -194,7 +196,7 @@
 
 将目标格视为既有镜头的高分辨率图形深化，而不是重新拍一张更真的图：
 
-- 锁定原画幅、机位高度、镜头方向、主体位置和动作关键帧；
+- 锁定原画幅、机位高度、镜头方向、主体位置和动作节点；
 - 锁定角色身份、服装色块、道具形状、环境地标、光的方向和主导色块；
 - 按原景别加深该加深的部分：姿态、关节、手部姿势、接触点、面部特写中的五官动态，以及更清楚的光面、光形和影子落点；天气或烟尘只能用概括色块或少量线条，不能变成照片粒子；
 - 原格若有红色动线，放大后保持相同起止方向并提高标记精度；
