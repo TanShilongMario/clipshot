@@ -4,7 +4,7 @@
 
 把剧本、分镜脚本和人物或场景设定，转化为可拍摄的电影级九宫格分镜图与时间线镜头表。
 
-本仓库是符合 [Agent Skills](https://agentskills.io/specification) 规范的独立 Skill：`cinematic-storyboard-design`。适用于 [Cursor](https://cursor.com/docs/skills)、Codex 及其他兼容该规范的 Agent。本轮发布不含案例图片。
+本仓库是符合 [Agent Skills](https://agentskills.io/specification) 规范的独立 Skill：`cinematic-storyboard-design`。适用于 [Cursor](https://cursor.com/docs/skills)、Codex 及其他兼容该规范的 Agent。`examples/` 里放了案例镜头表和生成提示词；分镜图等素材图片默认不入库，只留在本地。
 
 ## 它做什么
 
@@ -126,6 +126,10 @@ clipshot/
 ├── README.md
 ├── agents/
 │   └── openai.yaml                  # Codex / ChatGPT 展示与默认触发句
+├── examples/
+│   ├── 文字分镜.docx                # 案例剧本
+│   ├── market-chase/                # 菜市场追逐：镜头表与生成提示词
+│   └── storyboards/                 # 本地分镜图目录，图片不入库
 └── references/
     ├── cinematic-language.md        # 镜头语言：景别、轴线、运镜、转场、差异检查
     ├── action-cinematography.md     # 动作受力、非常规构图、运镜路径与表现力审查
@@ -141,4 +145,4 @@ Agent 先读 `SKILL.md`，再按任务按需读取 `references/`，避免一次�
 
 ## 后续
 
-案例图片将另作补充，不包含在本轮发布中。每次请求只依据当次提供的剧本、设定和参考，不迁移其他项目的时代、角色、地点、画幅或视觉设定。
+案例图片仍只保留在本地，不随仓库发布。每次请求只依据当次提供的剧本、设定和参考，不迁移其他项目的时代、角色、地点、画幅或视觉设定。

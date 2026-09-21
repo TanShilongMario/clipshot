@@ -4,3 +4,20 @@ Thumbs.db
 *.tmp
 __pycache__/
 *.pyc
+
+# Local asset images and renders
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.psd
+*.ai
+
+# Local packages
+*.zip
+*.rar
+*.7z
